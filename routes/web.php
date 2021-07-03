@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function() {
         ->name('profile.update');
 
     Route::resource('category', \App\Http\Controllers\CategoryController::class);
+    Route::resource('user', \App\Http\Controllers\UserController::class);
 
 });
 require __DIR__.'/auth.php';

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @method static paginate()
+ * Thêm cái này vào để phân trang
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -20,6 +24,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'description',
+        'avatar',
+        'coin'
     ];
 
     /**
