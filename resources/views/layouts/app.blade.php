@@ -15,6 +15,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -32,5 +33,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+        @yield('scripts')
     </body>
 </html>

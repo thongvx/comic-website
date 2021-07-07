@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::post('upload', [\App\Http\Controllers\UploadController::class, 'store']);
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', function () {

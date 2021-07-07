@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Models\TemporaryFile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,7 @@ class UserController extends Controller
     {
         var_dump($request->email);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->input('password')),
@@ -47,6 +48,10 @@ class UserController extends Controller
             'avatar'=> '',
             'coint' => 0
         ]);
+        $temporaryFile = TemporaryFile::where('folder', $request->avatar)->first();
+        var_dump($request->avatar);
+        die;
+
         return redirect()->route('user.create')->with('message', 'User saved successfully');
     }
 
