@@ -46,8 +46,8 @@
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Role
                                             </th>
-                                            <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Edit</span>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Action
                                             </th>
                                         </tr>
                                         </thead>
@@ -57,7 +57,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0 h-10 w-10">
-                                                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                                            <img class="h-10 w-10 rounded-full" src="{{ asset('storage/images/avatars/'.$user->avatar) }}" alt="">
                                                         </div>
                                                         <div class="ml-4">
                                                             <div class="text-sm font-medium text-gray-900">
@@ -78,7 +78,11 @@
                 </span>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    Admin
+                                                    @if($user->roles()->first())
+                                                        {{$user->roles()->first()->name}}
+                                                    @else
+                                                        user
+                                                    @endif
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <a href="{{route('user.edit', $user)}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>

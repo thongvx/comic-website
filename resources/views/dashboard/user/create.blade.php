@@ -80,9 +80,11 @@
                     <script>
                         const inputElement = document.querySelector('input[id="avatar"]')
                         const pond = FilePond.create(inputElement);
+                        FilePond.registerPlugin(FilePondPluginImageResize);
                         FilePond.setOptions({
                             server: {
-                                url: '/upload',
+                                /* Gọi đến route này để trỏ đến controller xử lý upload file*/
+                                url: '/upload-avatar',
                                 headers: {
                                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                                 }

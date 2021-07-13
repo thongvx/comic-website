@@ -6,25 +6,18 @@ use App\Http\Requests\CreateUserRequest;
 use App\Models\TemporaryFile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
+
     public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate();
         return view('dashboard.user.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('dashboard.user.create');
@@ -39,42 +32,33 @@ class UserController extends Controller
     public function store(CreateUserRequest $request)
     {
         var_dump($request->email);
+        $avatar = 'avatar_default.png';
+        if ($request->avatar){
+            $avatar = $request->avatar;
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->input('password')),
             'description' => $request->description,
-            'avatar'=> '',
+            'avatar'=> $avatar,
             'coint' => 0
         ]);
-        $temporaryFile = TemporaryFile::where('folder', $request->avatar)->first();
-        var_dump($request->avatar);
-        die;
 
-        return redirect()->route('user.create')->with('message', 'User saved successfully');
+        return redirect()->route('user.index')->with('message', 'User saved successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::all();
+        return view('dashboard.user.edit', compact('user','roles'));
     }
 
     /**

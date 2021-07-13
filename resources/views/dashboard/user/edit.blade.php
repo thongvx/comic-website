@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Contact - MDITech') }}
+            {{ __('Edit User') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -39,9 +39,10 @@
                     <div class="mb-4">
                         <label for="textemail"
                                class="block mb-2 text-sm font-bold text-gray-700">Role</label>
-                        <select class="appearance-none">
-                            <option>User</option>
-                            <option>Admin</option>
+                        <select class="appearance-none" >
+                            @foreach($roles as $role)
+                                <option value="{{$role->name}}" >{{$role->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div>

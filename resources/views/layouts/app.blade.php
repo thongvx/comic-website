@@ -33,6 +33,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
         <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
         @yield('scripts')
     </body>
