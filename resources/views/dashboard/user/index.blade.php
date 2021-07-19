@@ -9,20 +9,22 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {{--Tìm kiếm--}}
-            <form>
-                <div class="shadow flex">
-                    <input class="w-full rounded p-2" type="text" placeholder="Search...">
-                    <button class="bg-white w-auto flex justify-end items-center text-blue-500 p-2 hover:text-blue-400">
-                        <i class="material-icons">search</i>
-                    </button>
-                </div>
-            </form>
+            @livewire('search-users')
             <br>
             {{--Danh sách các item--}}
             <a href="{{route('user.create')}}"
                class="inline-flex items-center px-4 py-2 mb-4 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-green-600 border border-transparent rounded-md hover:bg-green-500 active:bg-green-700 focus:outline-none focus:border-green-700 focus:shadow-outline-gray disabled:opacity-25">
                 Create New User
             </a>
+            @if ($message = Session::get('success'))
+                <div class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 shadow-md my-3" role="alert">
+                    <div class="flex">
+                        <div>
+                            <p class="text-sm">{{ $message }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!-- This example requires Tailwind CSS v2.0+ -->

@@ -57,20 +57,17 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $roles = Role::all();
+        $roles = Role::orderBy('id', 'DESC')->get();
         return view('dashboard.user.edit', compact('user','roles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, User $user)
     {
-        //
+        $user->assignRole($request->role);
+        $user->update($request->all());
+        return redirect()->route('user.index')
+            ->with('success', 'User Updated Successfully.'.$request->role);
     }
 
     /**

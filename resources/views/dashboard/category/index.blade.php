@@ -66,7 +66,7 @@
                                                 Admin
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{route('task.edit', $task)}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                <a href="{{route('category.edit', $category)}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                             </td>
                                         </tr>
                                         @endforeach

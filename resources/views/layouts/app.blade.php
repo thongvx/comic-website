@@ -16,6 +16,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -36,5 +37,6 @@
         <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
         <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
         @yield('scripts')
+        @livewireScripts
     </body>
 </html>

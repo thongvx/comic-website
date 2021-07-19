@@ -39,7 +39,7 @@
                     <div class="mb-4">
                         <label for="textemail"
                                class="block mb-2 text-sm font-bold text-gray-700">Role</label>
-                        <select class="appearance-none" >
+                        <select class="appearance-none" name="role">
                             @foreach($roles as $role)
                                 <option value="{{$role->name}}" >{{$role->name}}</option>
                             @endforeach
